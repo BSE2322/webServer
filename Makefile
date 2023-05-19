@@ -29,13 +29,13 @@ migrate:
 	${bin_path}/python3 manage.py migrate
 
 dev:
-	${bin_path}/python3 manage.py runserver
+	${bin_path}/python3 manage.py runserver 0.0.0.0:8080
 
 run:
 	# the default settings file is development, it can be changed
 	# for any of the others, please don't use development setting in production
 	export DJANGO_SETTINGS_MODULE=project.settings;\
-	${bin_path}/gunicorn project.wsgi:application --bind localhost:8000
+	${bin_path}/gunicorn project.wsgi:application --bind 0.0.0.0:8080
 
 shell:
 	@echo 'To activate the venv use source ~/.venv/fass_web_server/bin/activate . Use deactivate to exit'

@@ -6,6 +6,9 @@ import os
 import sys
 from distutils.util import strtobool
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent
@@ -59,9 +62,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'fass_db',
-
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB', default='auth-db'),
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_HOST', default='127.0.0.1'),
+        'PORT': int(os.environ.get('POSTGRES_PORT', default=5432)),
     }
 }
 
@@ -124,5 +130,5 @@ CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', default=False)
 SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', default=False)
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='#um2g($a1-#2d(enmn!3pmg6axus*wbip_y#p!ezs0*$)(^!^o')
 ENV_ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
-ALLOWED_HOSTS = ENV_ALLOWED_HOSTS.split(',') if ENV_ALLOWED_HOSTS is not None else ["fasswebserver-566a657czq-uc.a.run.app"]
+ALLOWED_HOSTS = ENV_ALLOWED_HOSTS.split(',') if ENV_ALLOWED_HOSTS is not None else ["fasswebserver-566a657czq-uc.a.run.app","localhost"]
 DEBUG = bool(strtobool(os.environ.get('DEBUG', default='True')))
