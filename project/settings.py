@@ -124,5 +124,5 @@ CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', default=False)
 SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', default=False)
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', default='#um2g($a1-#2d(enmn!3pmg6axus*wbip_y#p!ezs0*$)(^!^o')
 ENV_ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
-ALLOWED_HOSTS = ENV_ALLOWED_HOSTS.split(',') if ENV_ALLOWED_HOSTS is not None else []
+ALLOWED_HOSTS = ENV_ALLOWED_HOSTS.split(',') if ENV_ALLOWED_HOSTS is not None else ["fasswebserver-566a657czq-uc.a.run.app"]
 DEBUG = bool(strtobool(os.environ.get('DEBUG', default='True')))
