@@ -10,7 +10,7 @@ class EventSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Event
-        fields = ['id', 'time', 'location', 'device_id', 'event_type', 'sound_file', 'device']
+        fields = ['id', 'time', 'location', 'status', 'device_id', 'event_type', 'sound_file', 'device']
 
 
 class DeviceSerializer(serializers.ModelSerializer):
