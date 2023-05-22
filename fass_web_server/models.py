@@ -7,6 +7,7 @@ class Event(models.Model):
     id = models.AutoField(primary_key=True)
     time = models.DateTimeField(null=True, blank=True, default=timezone.now)
     location = models.CharField(max_length=255, null=True, blank=True)
+    status = models.CharField(max_length=255, blank=True)
     event_type = models.CharField(max_length=255, null=True, blank=True)
     sound_file = models.CharField(max_length=255, null=True, blank=True)
     device = models.ForeignKey('Device', on_delete=models.CASCADE, related_name='events')
