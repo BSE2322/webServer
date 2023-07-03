@@ -20,6 +20,7 @@ RUN addgroup --system app && adduser --system app --ingroup app
 
 # Create directories app_home and static directories
 ENV HOME=/home/app
+RUN mkdir $HOME
 ENV APP_HOME=/home/app/web
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME

@@ -9,7 +9,7 @@ class Event(models.Model):
     location = models.CharField(max_length=255, null=True, blank=True)
     status = models.CharField(max_length=255, blank=True,default="Not Resolved")
     event_type = models.CharField(max_length=255, null=True, blank=True, default="deforestation")
-    sound_file = models.CharField(max_length=255, null=True, blank=True)
+    sound_file = models.TextField(null=True, blank=True)
     device = models.ForeignKey('Device', on_delete=models.CASCADE, related_name='events')
 
     class Meta:
