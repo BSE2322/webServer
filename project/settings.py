@@ -8,6 +8,10 @@ from distutils.util import strtobool
 from pathlib import Path
 from dotenv import load_dotenv
 
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +42,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# firebase settings
+cred = credentials.Certificate("./serviceAccountKey.json")
+app = firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 ROOT_URLCONF = 'project.urls'
 CORS_ORIGIN_ALLOW_ALL = True

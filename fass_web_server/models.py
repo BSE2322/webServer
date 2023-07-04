@@ -7,7 +7,7 @@ class Event(models.Model):
     id = models.AutoField(primary_key=True)
     time = models.DateTimeField(null=True, blank=True, default=timezone.now)
     location = models.CharField(max_length=255, null=True, blank=True)
-    status = models.CharField(max_length=255, blank=True,default="Not Resolved")
+    status = models.CharField(max_length=255, blank=True,default="Pending")
     event_type = models.CharField(max_length=255, null=True, blank=True, default="deforestation")
     sound_file = models.TextField(null=True, blank=True)
     device = models.ForeignKey('Device', on_delete=models.CASCADE, related_name='events')
