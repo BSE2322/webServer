@@ -28,7 +28,7 @@ class EventViewSet(viewsets.ModelViewSet):
         doc_ref = db.collection("logs").document(str(serializer.data.get("id")))
         doc_ref.set({
             "date": serializer.data.get("time"),
-            "location": "4,4",
+            "location": serializer.data.get("location"),
             "status": serializer.data.get("status")
         })
         send_push_message({
